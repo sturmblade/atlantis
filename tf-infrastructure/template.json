@@ -1,0 +1,210 @@
+{
+  "ipcMode": null,
+  "executionRoleArn": "arn:aws:iam::770325202104:role/atlantiscomplete-ecs_task_execution",
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "environmentFiles": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": [],
+        "options": {
+          "awslogs-group": "atlantiscomplete",
+          "awslogs-region": "ca-central-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "entryPoint": [
+        "docker-entrypoint.sh"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 4141,
+          "protocol": "tcp",
+          "containerPort": 4141
+        }
+      ],
+      "command": [
+        "server"
+      ],
+      "linuxParameters": null,
+      "cpu": 512,
+      "environment": [
+        {
+          "name": "ATLANTIS_ALLOW_REPO_CONFIG",
+          "value": "true"
+        },
+        {
+          "name": "ATLANTIS_ATLANTIS_URL",
+          "value": "https://atlantiscomplete.genxcloudsol.ca"
+        },
+        {
+          "name": "ATLANTIS_BITBUCKET_BASE_URL",
+          "value": ""
+        },
+        {
+          "name": "ATLANTIS_BITBUCKET_USER",
+          "value": ""
+        },
+        {
+          "name": "ATLANTIS_GH_USER",
+          "value": "fbobes-gcs"
+        },
+        {
+          "name": "ATLANTIS_GITLAB_HOSTNAME",
+          "value": "gitlab.com"
+        },
+        {
+          "name": "ATLANTIS_GITLAB_USER",
+          "value": ""
+        },
+        {
+          "name": "ATLANTIS_HIDE_PREV_PLAN_COMMENTS",
+          "value": "false"
+        },
+        {
+          "name": "ATLANTIS_LOG_LEVEL",
+          "value": "debug"
+        },
+        {
+          "name": "ATLANTIS_PORT",
+          "value": "4141"
+        },
+        {
+          "name": "ATLANTIS_REPO_WHITELIST",
+          "value": "github.com/sturmblade/*"
+        }
+      ],
+      "resourceRequirements": null,
+      "ulimits": [
+        {
+          "name": "nofile",
+          "softLimit": 4096,
+          "hardLimit": 16384
+        }
+      ],
+      "dnsServers": null,
+      "mountPoints": [],
+      "workingDirectory": "/tmp",
+      "secrets": [
+        {
+          "valueFrom": "/atlantis/github/user/token",
+          "name": "ATLANTIS_GH_TOKEN"
+        },
+        {
+          "valueFrom": "/atlantis/webhook/secret",
+          "name": "ATLANTIS_GH_WEBHOOK_SECRET"
+        }
+      ],
+      "dockerSecurityOptions": null,
+      "memory": 1024,
+      "memoryReservation": 256,
+      "volumesFrom": [],
+      "stopTimeout": 30,
+      "image": "runatlantis/atlantis:latest",
+      "startTimeout": 30,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": "atlantis",
+      "readonlyRootFilesystem": false,
+      "dockerLabels": {
+        "org.opencontainers.image.title": "Atlantis",
+        "org.opencontainers.image.url": "https://github.com/runatlantis/atlantis/blob/master/Dockerfile",
+        "org.opencontainers.image.description": "A self-hosted golang application that listens for Terraform pull request events via webhooks."
+      },
+      "systemControls": null,
+      "privileged": null,
+      "name": "atlantiscomplete"
+    }
+  ],
+  "placementConstraints": [],
+  "memory": "1024",
+  "taskRoleArn": "arn:aws:iam::770325202104:role/atlantiscomplete-ecs_task_execution",
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:ca-central-1:770325202104:task-definition/atlantiscomplete:2",
+  "family": "atlantiscomplete",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.container-ordering"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.secrets.ssm.environment-variables"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.task-eni"
+    }
+  ],
+  "pidMode": null,
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "revision": 2,
+  "status": "ACTIVE",
+  "inferenceAccelerators": null,
+  "proxyConfiguration": null,
+  "volumes": []
+}
